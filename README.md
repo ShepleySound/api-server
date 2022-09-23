@@ -7,8 +7,8 @@ An API server built using NodeJS, Express, and PostgreSQL. Tests performed using
 ### Author: Robert Shepley
 
 <!-- Replace URL's and add more necessary links -->
-- [Tests Report]()
-- [Assignment Pull Request](https://github.com/ShepleySound/api-server/pull/1)
+- [Tests Report](https://github.com/ShepleySound/api-server/actions)
+- [Assignment Pull Request](https://github.com/ShepleySound/api-server/pull/2)
 - [Heroku Prod Deployment](https://shepley-api-server.herokuapp.com/)
 
 ### Setup
