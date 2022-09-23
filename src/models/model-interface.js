@@ -30,15 +30,15 @@ class ModelInterface {
     }
   }
 
-  async readWithRelations(query) {
-    try {
-      let record = await this.model.findOne(query);
-      return record;
-    } catch(err) {
-      console.error(err.message);
-      return err;
-    }
-  }
+  // async readWithRelations(query) {
+  //   try {
+  //     let record = await this.model.findOne(query);
+  //     return record;
+  //   } catch(err) {
+  //     console.error(err.message);
+  //     return err;
+  //   }
+  // }
 
   // Returns the number of records updated. Should be either 0 or 1.
   async update(id, json) {

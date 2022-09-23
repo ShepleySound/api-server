@@ -19,11 +19,14 @@ const sequelizeDB = new Sequelize(DATABASE_URL, {
 });
 
 // Require models
-const Users = require('./users-model')(sequelizeDB, DataTypes);
-const Books = require('./books-model')(sequelizeDB, DataTypes);
+const User = require('./users-model')(sequelizeDB, DataTypes);
+const Book = require('./books-model')(sequelizeDB, DataTypes);
+
+User.belongsToMany(Book, { through: 'BookUsers' });
+Book.belongsToMany(User, { through: 'BookUsers' });
 
 module.exports = { 
   sequelizeDB,
-  UserInterface: new ModelInterface(Users),
-  BookInterface: new ModelInterface(Books),
+  UserInterface: new ModelInterface(User),
+  BookInterface: new ModelInterface(Book),
 };
