@@ -3,7 +3,6 @@
 const express = require('express');
 // Import functional middleware
 const logger = require('./middleware/logger.js');
-// const validator = require('./middleware/validator.js');
 
 // Import error handling files.
 const notFound = require('./middleware/error-handlers/404');
@@ -15,8 +14,8 @@ const booksRouter = require('./routes/books');
 
 const app = express();
 
-app.use(express.json());
 app.use(logger);
+app.use(express.json());
 app.use(usersRouter);
 app.use(booksRouter);
 

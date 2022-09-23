@@ -43,11 +43,12 @@ class ModelInterface {
   // Returns the number of records updated. Should be either 0 or 1.
   async update(id, json) {
     try {
-      const updated = await this.model.update(json, {
+      await this.model.update(json, {
         where: {
           id: id,
         },
       });
+      const updated = await this.model.findByPk(id);
       return updated;
     } catch(err) {
       console.error(err.message);
@@ -57,11 +58,12 @@ class ModelInterface {
   // Returns the number of records deleted. Should be either 0 or 1.
   async delete(id) {
     try {
-      const deleted = await this.model.destroy({
+      await this.model.destroy({
         where: {
           id: id,
         },
       });
+      const deleted = await this.model.findByPk(id);
       return deleted;
     } catch(err) {
       console.error(err);

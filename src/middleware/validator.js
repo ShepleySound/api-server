@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (req, res, next) => {
-  if (req.query.name) {
+  if (req.body.name) {
     next();
-  } next('This request requires a name.');
+  } else next('This request requires a name.');
 };

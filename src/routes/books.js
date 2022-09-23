@@ -15,20 +15,18 @@ router.get('/books/:id', async (req, res) => {
 });
 
 router.post('/books', async (req, res) => {
-  console.log('Request Body:', req.body);
-
   const newBook = await BookInterface.create(req.body);
   res.status(201).send(newBook);
 });
 
 router.put('/books/:id', async (req, res) => {
   const updated = await BookInterface.update(req.params.id, req.body);
-  res.status(200).send(`${updated} row(s) updated successfully.`);
+  res.status(200).send(updated);
 });
 
 router.delete('/books/:id', async (req, res) => {
   const deleted = await BookInterface.delete(req.params.id);
-  res.status(200).send(`${deleted} row(s) deleted successfully.`);
+  res.status(200).send(deleted);
 });
 
 module.exports = router;
