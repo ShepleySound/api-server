@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 const { Sequelize, DataTypes } = require('sequelize');
-const ModelInterface = require('./modelInterface');
+const ModelInterface = require('./model-interface');
 
 
 const DATABASE_URL = process.env.NODE_ENV === 'test'
@@ -19,11 +19,11 @@ const sequelizeDB = new Sequelize(DATABASE_URL, {
 });
 
 // Require models
-const Users = require('./users')(sequelizeDB, DataTypes);
-const Books = require('./books')(sequelizeDB, DataTypes);
+const Users = require('./users-model')(sequelizeDB, DataTypes);
+const Books = require('./books-model')(sequelizeDB, DataTypes);
 
 module.exports = { 
   sequelizeDB,
   UserInterface: new ModelInterface(Users),
-  Books: new ModelInterface(Books),
+  BookInterface: new ModelInterface(Books),
 };

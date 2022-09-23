@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelizeDB, DataTypes) => {
-  return sequelizeDB.define('users', {
+  return sequelizeDB.define('books', {
     title: {
       type: DataTypes.STRING,
       allowNull: false,

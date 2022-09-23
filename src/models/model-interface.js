@@ -1,5 +1,4 @@
 'use strict';
-
 class ModelInterface {
 
   constructor(model) {
@@ -37,6 +36,35 @@ class ModelInterface {
       return record;
     } catch(err) {
       console.error(err.message);
+      return err;
+    }
+  }
+
+  // Returns the number of records updated. Should be either 0 or 1.
+  async update(id, json) {
+    try {
+      const updated = await this.model.update(json, {
+        where: {
+          id: id,
+        },
+      });
+      return updated;
+    } catch(err) {
+      console.error(err.message);
+      return err;
+    }
+  }
+  // Returns the number of records deleted. Should be either 0 or 1.
+  async delete(id) {
+    try {
+      const deleted = await this.model.destroy({
+        where: {
+          id: id,
+        },
+      });
+      return deleted;
+    } catch(err) {
+      console.error(err);
       return err;
     }
   }
