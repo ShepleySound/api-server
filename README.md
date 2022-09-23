@@ -49,25 +49,24 @@ The following endpoints interact with a Postgres database using Sequelize. Seque
 - Endpoint: `/`
   - Response: `The server works!`
 
-- Endpoint: `/people`
-  - Methods: GET
-
-- Endpoint: `/people/id`
-  - Methods: GET, POST, PUT
-  - Required properties:
+- Endpoint: `/api/v1/users`
+  - Methods: GET, POST
+  - Required properties for POST:
     - name (string)
-  - Optional properties:
-    - age (integer)
 
-- Endpoint: `/books`
-  - Methods: GET
+- Endpoint: `/api/v1/users/id`
+  - Methods: GET, PUT, DELETE
 
-- Endpoint: `/books/id`
-  - Methods: GET, POST, PUT
-  - Required properties:
+- Endpoint: `/api/v1/books`
+  - Methods: GET, POST
+  - Required properties for POST:
     - title (string)
     - author (string)
     - pages (integer)
+
+- Endpoint: `/api/v1/books/id`
+  - Methods: GET, PUT, DELETE
+
 
 ### Tests
 
