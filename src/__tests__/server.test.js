@@ -31,7 +31,7 @@ describe('Test API Server', () => {
   });
 
   test('500 if name not specified in /users POST', async () => {
-    const response = await request.post('/users').send({
+    const response = await request.post('/api/v1/users').send({
       notName: 'Test User',
     });
     expect(response.status).toEqual(500);
@@ -44,13 +44,13 @@ describe('Test API Server', () => {
 
 describe('Test /users endpoint methods', () => {
   test('Handle getting all users', async () => {
-    const response = await request.get('/users');
+    const response = await request.get('/api/v1/users');
     expect(response.status).toEqual(200);
     expect(response.body[0]).toBeUndefined();
   });
 
   test('Create a user', async () => {
-    let response = await request.post('/users').send({
+    let response = await request.post('/api/v1/users').send({
       name: 'Test User',
     });
     expect(response.status).toEqual(201);
@@ -58,13 +58,13 @@ describe('Test /users endpoint methods', () => {
   });
 
   test('Get a user by id', async () => {
-    const response = await request.get('/users/1');
+    const response = await request.get('/api/v1/users/1');
     expect(response.status).toEqual(200);
     expect(response.body.name).toEqual('Test User');
   });
 
   test('Update a user', async () => {
-    let response = await request.put('/users/1').send({
+    let response = await request.put('/api/v1/users/1').send({
       name: 'Updated Test User',
     });
     expect(response.status).toEqual(200);
@@ -72,7 +72,7 @@ describe('Test /users endpoint methods', () => {
   });
 
   test('Delete a user', async () => {
-    let response = await request.delete('/users/1');
+    let response = await request.delete('/api/v1/users/1');
     expect(response.status).toEqual(200);
     expect(response.body.title).toBeUndefined();
   });
@@ -80,12 +80,12 @@ describe('Test /users endpoint methods', () => {
 
 describe('Test /books endpoint methods', () => {
   test('Handle getting all books', async () => {
-    const response = await request.get('/books');
+    const response = await request.get('/api/v1/books');
     expect(response.status).toEqual(200);
   });
 
   test('Create a book', async () => {
-    let response = await request.post('/books').send({
+    let response = await request.post('/api/v1/books').send({
       title: 'Test Book',
       author: 'Test Author',
       pages: 100,
@@ -97,7 +97,7 @@ describe('Test /books endpoint methods', () => {
   });
 
   test('Get a book by id', async () => {
-    const response = await request.get('/books/1');
+    const response = await request.get('/api/v1/books/1');
     expect(response.status).toEqual(200);
     expect(response.body.title).toEqual('Test Book');
     expect(response.body.author).toEqual('Test Author');
@@ -105,7 +105,7 @@ describe('Test /books endpoint methods', () => {
   });
 
   test('Update a book', async () => {
-    let response = await request.put('/books/1').send({
+    let response = await request.put('/api/v1/books/1').send({
       title: 'Updated Test Book',
     });
     expect(response.status).toEqual(200);
@@ -115,7 +115,7 @@ describe('Test /books endpoint methods', () => {
   });
 
   test('Delete a book', async () => {
-    let response = await request.delete('/books/1');
+    let response = await request.delete('/api/v1/books/1');
     expect(response.status).toEqual(200);
     expect(response.body.title).toBeUndefined();
   });

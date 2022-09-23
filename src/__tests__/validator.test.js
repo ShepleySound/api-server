@@ -5,6 +5,9 @@ const validator = require('../middleware/validator');
 describe('Validator Middleware', () => {
   test('Works as expected', async () => {
     const req = {
+      params: {
+        route: 'users',
+      },
       body: {
         name: 'hello',
       },
